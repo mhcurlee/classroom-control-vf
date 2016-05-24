@@ -53,7 +53,7 @@ node default {
     }
   
   
-  include users
-  include skeleton
+ # include users
+#  include skeleton
   
 }
