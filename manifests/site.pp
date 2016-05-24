@@ -53,4 +53,6 @@ node default {
     }
   
   
+  include users
+  
 }
