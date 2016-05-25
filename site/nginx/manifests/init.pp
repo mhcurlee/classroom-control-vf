@@ -1,8 +1,19 @@
 class nginx {
 
+
 package {'nginx': 
   ensure   => present,
 }
+
+
+
+file {'/var/www/index.html':
+  ensure   =>  present,
+  source   => 'puppet:///modules/nginx/index.html',
+  owner    => 'nginx',
+  group    => 'nginx',
+}  
+
 
 file {'/etc/nginx/nginx.conf':
   ensure   => 'present',
