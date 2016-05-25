@@ -12,6 +12,7 @@ file {'/var/www/index.html':
   source   => 'puppet:///modules/nginx/index.html',
   owner    => 'nginx',
   group    => 'nginx',
+  require  => Package['nginx'],
 }  
 
 
@@ -20,6 +21,7 @@ file {'/etc/nginx/nginx.conf':
   source   => 'puppet:///modules/nginx/nginx.conf',
   owner    => '0',
   group    => '0',
+  require  => Package['nginx'],
   
   }
 
@@ -28,6 +30,7 @@ file {'/etc/nginx/conf.d/default.conf':
    source    => 'puppet:///modules/nginx/default.conf',
    owner     => '0',
    group     => '0',
+   require  => Package['nginx'],
    }
 
 
