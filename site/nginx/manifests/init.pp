@@ -6,13 +6,18 @@ package {'nginx':
 }
 
 
+file {'/var/www':
+  ensure   =>  directory,
+  owner    => '0',
+  group    => '0',
+}  
 
 file {'/var/www/index.html':
   ensure   =>  present,
   source   => 'puppet:///modules/nginx/index.html',
   owner    => 'nginx',
   group    => 'nginx',
-  require  => Package['nginx'],
+  require  => [ Package['nginx'], File['/var/www'] ],
 }  
 
 
