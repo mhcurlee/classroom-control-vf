@@ -1,6 +1,16 @@
 class nginx {
 
 
+
+
+File {
+  owner  => '0',
+  group  => '0',
+  mode   => '0644',
+}
+
+
+
 package {'nginx': 
   ensure   => present,
 }
@@ -8,24 +18,19 @@ package {'nginx':
 
 file {'/var/www':
   ensure   =>  directory,
-  owner    => '0',
-  group    => '0',
+  mode     =>  '0755',
 }  
 
 file {'/var/www/index.html':
   ensure   =>  present,
   source   => 'puppet:///modules/nginx/index.html',
-  owner    => 'nginx',
-  group    => 'nginx',
-  require  => [ Package['nginx'], File['/var/www'] ],
+  require  => Package['nginx'],
 }  
 
 
 file {'/etc/nginx/nginx.conf':
   ensure   => 'present',
   source   => 'puppet:///modules/nginx/nginx.conf',
-  owner    => '0',
-  group    => '0',
   require  => Package['nginx'],
   
   }
@@ -33,8 +38,6 @@ file {'/etc/nginx/nginx.conf':
 file {'/etc/nginx/conf.d/default.conf':
    ensure    => 'present',
    source    => 'puppet:///modules/nginx/default.conf',
-   owner     => '0',
-   group     => '0',
    require  => Package['nginx'],
    }
 
