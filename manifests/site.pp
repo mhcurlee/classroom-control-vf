@@ -63,6 +63,6 @@ notify { "This is a ${vmname} virtual machine.": }
 
 
 
-notify { hiera('message'): } }
+notify { hiera('message'): }
 
 }
