@@ -3,7 +3,7 @@ class nginx
 $package = $nginx::params::package,
 $owner =  $nginx::params::owner,
 $group = $nginx::params::group,
-$docroot = $root,
+$docroot = $nginx::params::docroot,
 $confdir = $nginx::params::confdir,
 $logdir = $nginx::params::logdir,
 $osuser = $nginx::params::osuser,
