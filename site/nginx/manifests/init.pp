@@ -6,14 +6,13 @@ $group = $nginx::params::group
 $docroot = $root
 $confdir = $nginx::params::confdir
 $logdir = $nginx::params::logdir
+$osuser = $nginx::params::osuser
 
 )
-
-{
-
 inherits nginx::params
 
 
+{
 
 
 File {
