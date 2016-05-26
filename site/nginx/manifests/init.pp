@@ -1,29 +1,20 @@
-class nginx ($root) 
+class nginx 
+(
+$package = $nginx::params::package 
+$owner =  $nginx::params::owner
+$group = $nginx::params::group
+$docroot = $root
+$confdir = $nginx::params::confdir
+$logdir = $nginx::params::logdir
+
+)
+
 {
 
-case $::osfamily {
-'redhat','debian' : { 
-
-$package = 'nginx' 
-$owner = 'root'
-$group = 'root' 
-$docroot = $root 
-$confdir = '/etc/nginx' 
-$logdir = '/var/log/nginx'
-
-}
+inherits nginx::params
 
 
-default : {
-fail("Module ${module_name} is not supported on ${::osfamily}") }
 
-}
-
-# user the service will run as. Used in the nginx.conf.erb template
-$user = $::osfamily ? { 
-'redhat' => 'nginx', 
-'debian' => 'www-data', 
-}
 
 File {
 owner => $owner, 
