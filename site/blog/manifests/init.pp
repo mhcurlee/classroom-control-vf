@@ -19,7 +19,14 @@ service {"mariadb":
   enable  => true,
   }
   
-  
+
+
+file {'/var/www/html/index.php':
+  ensure  => file,
+  source  => "puppet:///modules/blog/index.php",
+  owner   => '0',
+  group   => '0',
+  }
 
   
 }
